@@ -1,7 +1,6 @@
-import java.util.Scanner
-data class Archive(var name: String) {
+open class Archive(var name: String) {
 
-    val setNote:MutableSet<Note> = mutableSetOf()
+    val setNote:MutableList<Note> = mutableListOf()
     fun printArchive(){
         println("Архив $name Создан")
     }
