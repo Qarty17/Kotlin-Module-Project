@@ -1,6 +1,6 @@
 import java.util.Scanner
 
-class Menu() {
+class Menu {
     var listOfArchive:MutableList<Archive> = mutableListOf()
     private var count=1
     fun menu(){

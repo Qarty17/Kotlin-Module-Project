@@ -22,7 +22,12 @@ class Menu2(archive:Archive) {
             return
         }
         println("Введите содержание заметки: ")
+
         val textNote=Scanner(System.`in`).nextLine()
+        if (textNote==""){
+            println("Вы ввели пустой текст")
+            return
+        }
         val note=Note(nameNote,textNote)
         listOfNote.add(note)
         count+=1
