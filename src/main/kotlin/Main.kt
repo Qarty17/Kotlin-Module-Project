@@ -2,6 +2,8 @@
 
 import java.util.Objects
 import java.util.Scanner
+import kotlin.random.Random.Default.nextInt
+
 fun main() {
     val menuArch = Menu()
     val listArchive=menuArch.listOfArchive
@@ -9,20 +11,21 @@ fun main() {
         while(flag1){
             menuArch.menu()
             try {
-                var scanner=Scanner(System.`in`)
-                val num=scanner.nextInt()
+
+                val num=Scanner(System.`in`).nextInt()
                 val exitCode=listArchive.size+1
 
                 when(num){
                     0->menuArch.addArchive()
                     in 1 until exitCode-> {
+                        val menuNote=Menu2(listArchive[num-1])
                         var flag=true
-                        try {
                             while (flag){
-                                val menuNote=Menu2(listArchive[num-1])
                                 val listNote=menuNote.listOfNote
                                 menuNote.menu2()
-                                val num2=scanner.nextInt()
+
+                                try {
+                                val num2=Scanner(System.`in`).nextInt()
                                 var exitCode2=listNote.size+1
                                 when(num2){
                                     0->menuNote.addNote()
@@ -32,11 +35,15 @@ fun main() {
                                     exitCode2->{
                                         println("Выход")
                                         flag=false
+                                }else->{
+                                    if (num2 !in 0..exitCode2){
+                                        println("такого числа нет")
+                                    }
                                 }
                             }
-                        }
-                    }catch (e:Exception){
-                        println("Введите число")
+                        }catch (e:Exception){
+                                    println("Введите число")
+                                }
                     }
 
                 }
